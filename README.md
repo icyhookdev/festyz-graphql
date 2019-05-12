@@ -12,6 +12,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Getting Started
 
+#### Environment
+
 Up docker container for mongo
 
     docker-compose up -d
@@ -26,15 +28,30 @@ Copy .env.example to .env
 
 Setup your environment variables
 
-    PORT=27017
-    DB_HOST=mongoserver
-    DB_PORT=27017
-    DB_NAME=festyz-staging
-    DB_USER=
-    DB_PASSWORD=
+    PORT=4000
+    DB_HOST=localhost:27017
+    DB_NAME=festyz
+    DB_USER=festyz
+    DB_PASSWORD=festyz
 
-+ Seed the data via []
+#### Seeding
+
+Seed the data running the scripts
+
+    yarn seed-db categories
+    yarn seed-db organizations
+    yarn seed-db events
+
+To define more seeders or udpate it you can find them on the directory ```./db/seeders/```, the data is generated using [Faker](https://www.npmjs.com/package/faker)
+
+#### Running
+
 + Run dev server with ```yarn dev```
 + Open browser on http://localhost:4000
+
+
+### Contributing
+
+Using commitizen is **mandatory** to commit to this project.
 
 

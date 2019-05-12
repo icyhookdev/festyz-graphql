@@ -1,0 +1,33 @@
+{
+  "name": "graphql-yoga-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
+    "serve": "NODE_ENV=production node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql-yoga": "^1.17.4",
+    "mongoose": "^5.5.2",
+    "mongoose-paginate-v2": "^1.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "cz-conventional-changelog": "2.1.0",
+    "nodemon": "^1.18.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

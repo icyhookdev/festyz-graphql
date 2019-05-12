@@ -3,7 +3,7 @@ type Organization {
   _id: ID!
   name: String!
   shortDescription: String!
-  LongDescription: String!
+  longDescription: String!
   logoUrl: String!
   websiteUrl: String!
   createdOn: String!
@@ -15,6 +15,7 @@ type Category {
   description: String!
   coverImage: String!
   createdOn: String!
+  color: String!
   events: [Event]
 }
 type Event {

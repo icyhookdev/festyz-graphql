@@ -5,8 +5,8 @@ services:
     ports:
       - '27017:27017'
     environment:
-      MONGODB_USERNAME: graphql
-      MONGODB_PASSWORD: josh12
-      MONGODB_DATABASE: graphqlYoga
+      MONGODB_USERNAME: festyz
+      MONGODB_PASSWORD: festyz
+      MONGODB_DATABASE: festyz
     volumes:
       - './containers/mongo:/data/db'

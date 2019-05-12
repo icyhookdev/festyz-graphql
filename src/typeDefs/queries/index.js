@@ -4,5 +4,7 @@ type Query {
   organizations: [Organization]
   event(_id: ID): Event
   events: [Event]
+  categories: [Category],
+  category(_id:ID): Category
 }
 `

@@ -2,12 +2,13 @@ import { GraphQLServer } from 'graphql-yoga'
 import { startDB, models } from './db'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
+require('dotenv').config()
 
 const db = startDB({
-  user: 'graphql',
-  pwd: 'josh12',
-  url: 'localhost:27017',
-  db: 'graphqlYoga'
+  user: process.env.DB_USER,
+  pwd: process.env.DB_PASSWORD,
+  url: process.env.DB_HOST,
+  db: process.env.DB_NAME
 })
 
 const context = {
@@ -22,7 +23,7 @@ const Server = new GraphQLServer({
 })
 
 const opts = {
-  port: 4000
+  port: process.env.PORT
 }
 
 Server.start(opts, () => {

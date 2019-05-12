@@ -2,7 +2,7 @@ export const mutationsDef = `
    input OrganizationUpdate {
         name: String
         shortDescription: String
-        LongDescription: String
+        longDescription: String
         logoUrl: String
         websiteUrl: String
     }

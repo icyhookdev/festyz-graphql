@@ -32,7 +32,7 @@ var EventsSeeder = {
 
     for(let i = 0; i < 50; i++){
       data.push({
-        title: faker.name.title(),
+        title: faker.lorem.words(2),
         shortDescripction: faker.lorem.sentence(5),
         longDescripction: faker.lorem.sentences(5),
         categoryId: randomCategory,

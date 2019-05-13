@@ -4,6 +4,12 @@ export const eventResolver = {
   }
 }
 
+export const categoryResolver = {
+  events ({ _id }, args ,{ models }) {
+    return models.Event.find({categoryId: _id })
+  }
+}
+
 export const organizationResolver = {
   events ({ _id }, args, { models }) {
     return models.Event.find({ organizationId: _id })

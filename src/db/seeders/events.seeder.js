@@ -1,24 +1,63 @@
-const Seeder = require('  ').Seeder;
-import Model from '../src/db/models/Event';
+import { Event, Organization, Category }  from '../models';
+import moment from 'moment';
 import faker from 'faker';
 
-var EventsSeeder = Seeder.extend({
-  shouldRun: function () {
-    return Model.countDocuments().exec().then(count => count === 0);
-  },
-
-  run: function () {
+var EventsSeeder = {
+  getRandomOrganization: () => new Promise(function(resolve,reject){
+    Organization.count().exec(function (err, count) {
+      const random = Math.floor(Math.random() * count)
+      Organization.findOne().skip(random).exec(
+        function (err, result) {
+          resolve(result._id);
+        })
+    });
+  }),
+  getRandomCategory: () => new Promise(function(resolve,reject){
+    Category.count().exec(function (err, count) {
+      const random = Math.floor(Math.random() * count)
+      Category.findOne().skip(random).exec(
+        function (err, result) {
+          resolve(result._id);
+        })
+    });
+  }),
+  run: async function () {
     const data = []
 
-    for(let i = 0; i < 10; i++){
+    const randomOrganization = await this.getRandomOrganization();
+    const randomCategory = await this.getRandomCategory();
+
+    const targetPublic = ['all-public', 'children', 'teenage'];
+
+
+    for(let i = 0; i < 50; i++){
       data.push({
-        first_name: faker.name.firstName(),
-        last_name: faker.name.lastName(),
-        email: faker.internet.email()
+        title: faker.name.title(),
+        shortDescripction: faker.lorem.sentence(5),
+        longDescripction: faker.lorem.sentences(5),
+        categoryId: randomCategory,
+        targetPublic: faker.random.arrayElement(targetPublic),
+        datetime: faker.date.future(),
+        additionalDatetime: [],
+        organizationId: randomOrganization,
+        allowedItems: [],
+        address: faker.address.streetAddress(),
+        geoJsonAddress: { type: 'Point', coordinates: [parseFloat(faker.address.latitude()), parseFloat(faker.address.longitude())] },
+        durationUnit: 'hours',
+        duration: 1,
+        frequency: 0,
+        frequencyInterval: 'day', 
+        isFree: faker.random.boolean(),
+        capacity: faker.random.number(100,800,0),
+        ticketsUrl: faker.internet.url(),
+        imagesUrls: [faker.image.imageUrl(), faker.image.imageUrl, faker.image.imageUrl],
+        coverImageUrl: faker.image.imageUrl(),
+        status: faker.random.arrayElement(['draft', 'live', 'started', 'ended', 'completed', 'canceled']),
+        createdOn: moment(),      
       })
     }
 
-    Model.create(data, function(err){
+    Event.create(data, function(err){
       if(err){
         console.log('Something bad happened', err);
         process.exit();
@@ -29,6 +68,6 @@ var EventsSeeder = Seeder.extend({
     });
 
   }
-});
+};
 
 export default EventsSeeder;

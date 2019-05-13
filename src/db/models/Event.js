@@ -110,17 +110,17 @@ const EventSchema = new mongoose.Schema({
   countryId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Country',
-    require: true,
+    // require: true,
   },
   stateId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'State',
-    require: true,
+    // require: true,
   },
   cityId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'City',
-    require: true,
+    // require: true,
   },
   createdOn: {
     type: Date,

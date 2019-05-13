@@ -1,4 +1,10 @@
 export const rootTypesDef = `
+scalar Coordinates
+type PointGeometry {
+  type: String!
+  coordinates: Coordinates!
+}
+
 type Organization {
   _id: ID!
   name: String!
@@ -30,7 +36,7 @@ type Event {
   organizationId: ID!
   allowedItems: [String]
   address: String!
-  geoJsonAddress: String!
+  geoJsonAddress: PointGeometry!
   durationUnit: String!
   duration: Int!
   frequency: Int
@@ -45,7 +51,7 @@ type Event {
   stateId: ID!
   cityId: ID!
   createdOn: String!
-  cateogry: Category,
+  category: Category,
   organization: Organization,
 }
 `

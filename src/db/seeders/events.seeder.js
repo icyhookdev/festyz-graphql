@@ -24,13 +24,15 @@ var EventsSeeder = {
   run: async function () {
     const data = []
 
-    const randomOrganization = await this.getRandomOrganization();
-    const randomCategory = await this.getRandomCategory();
 
     const targetPublic = ['all-public', 'children', 'teenage'];
 
 
     for(let i = 0; i < 50; i++){
+
+      const randomOrganization = await this.getRandomOrganization();
+      const randomCategory = await this.getRandomCategory();
+  
       data.push({
         title: faker.lorem.words(2),
         shortDescripction: faker.lorem.sentence(5),

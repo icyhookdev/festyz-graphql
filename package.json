@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "apollo-server-core": "^2.5.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "git": "^0.1.5",
     "graphql-shield": "^5.3.5",

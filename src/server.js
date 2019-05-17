@@ -3,6 +3,7 @@ import { startDB, models } from './db'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 import { permissions } from './auth';
+import  cors from 'cors';
 
 require('dotenv').config()
 
@@ -32,6 +33,8 @@ const opts = {
   },
   port: process.env.PORT
 }
+
+server.express.use(cors());
 
 server.start(opts, () => {
   console.log(`Server is running on http://localhost:${opts.port}`)

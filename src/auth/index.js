@@ -22,7 +22,7 @@ const options = {
 };
 
 
-const isAuthenticated = rule()(async (parent, args, ctx, info) => {
+const isAuthenticated = rule()((parent, args, ctx, info) => {
   let token = ctx.request.headers.token;
   
   jwt.verify(token, getKey, options, (err, decoded) => {

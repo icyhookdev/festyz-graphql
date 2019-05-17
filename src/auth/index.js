@@ -39,9 +39,8 @@ const permissions = shield({
     updateEvent: isAuthenticated,
     createOrganization: isAuthenticated,
     updateOrganization: isAuthenticated,
-
-},
-}, {debug: true})
+}
+});
 
 
 export { permissions };

@@ -52,6 +52,6 @@ type Event {
   cityId: ID!
   createdOn: String!
   category: Category,
-  organization: Organization,
+  organization: Organization
 }
 `

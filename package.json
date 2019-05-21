@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "@limit0/mongoose-graphql-pagination": "^1.1.4",
     "apollo-server-core": "^2.5.0",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
@@ -25,7 +26,7 @@
     "jwks-rsa": "^1.5.0",
     "moment": "^2.24.0",
     "mongoose": "^5.5.2",
-    "mongoose-paginate-v2": "^1.2.1"
+    "mongoose-paginate": "^5.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",

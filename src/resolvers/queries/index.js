@@ -1,20 +1,37 @@
+import { Pagination } from '@limit0/mongoose-graphql-pagination';
+
+const getPaginated = async (models, subject, args) => {
+
+  const { first, after, field, order } = args;
+
+  const paginated = new Pagination(models[subject], {
+    pagination: { first, after, },
+    sort: { field, order },
+  });
+
+  const data = await paginated.getEdges();
+
+  return data.map(item =>  item.node);
+
+}
+
 export const queriesResolver = {
   organization (parents,{ _id },{ models }) {
     return models.Organization.findOne({ _id })
   },
-  organizations (parents, args, { models }) {
-    return models.Organization.find({})
+  async organizations (parents, args, { models }) {
+    return getPaginated(models, 'Organization', args);
   },
   category (parents,{ _id },{ models }) {
     return models.Category.findOne({ _id })
   },
-  categories (parents, args, { models }) {
-    return models.Category.find({})
+  async categories (parents, args, { models }) {
+    return getPaginated(models, 'Category', args);
   },
   event (parents,{ _id },{ models }) {
     return models.Event.findOne({ _id })
   },
-  events (parents, args, { models }) {
-    return models.Event.find({})
+  async events (parents, args, { models }) {
+    return getPaginated(models, 'Event', args);
   }
 }

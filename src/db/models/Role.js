@@ -1,7 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const paginate = require('mongoose-paginate-v2');
+const paginate = require('mongoose-paginate');
 
 const roleSchema = mongoose.Schema({
     claim: String,

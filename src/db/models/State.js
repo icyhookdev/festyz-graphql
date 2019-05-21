@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const paginate = require('mongoose-paginate-v2');
+const paginate = require('mongoose-paginate');
 
 const stateSchema = mongoose.Schema({
   id: String,

@@ -2,7 +2,7 @@ import { Pagination } from '@limit0/mongoose-graphql-pagination';
 
 const getPaginated = async (models, subject, args) => {
 
-  const { first, after, field, order } = args;
+  const { first, after, field, order, criteria } = args;
 
   const paginated = new Pagination(models[subject], {
     pagination: { first, after, },
@@ -10,8 +10,11 @@ const getPaginated = async (models, subject, args) => {
   });
 
   const data = await paginated.getEdges();
+  const totalCount = await paginated.getTotalCount();
+  const hasNextPage= await paginated.hasNextPage();
+  const cursor= await paginated.getEndCursor();
 
-  return data.map(item =>  item.node);
+  return { data: data.map(item =>  item.node), totalCount, cursor, hasNextPage } ;
 
 }
 

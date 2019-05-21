@@ -51,7 +51,28 @@ type Event {
   stateId: ID!
   cityId: ID!
   createdOn: String!
-  category: Category,
+  category: Category
   organization: Organization
+}
+
+type EventsResponse {
+  data: [Event]
+  totalCount: Int
+  hasNextPage: Boolean
+  cursor: String
+}
+
+type CategoriesResponse {
+  data: [Category]
+  totalCount: Int
+  hasNextPage: Boolean
+  cursor: String
+}
+
+type OrganizationsResponse {
+  data: [Organization]
+  totalCount: Int
+  hasNextPage: Boolean
+  cursor: String
 }
 `
